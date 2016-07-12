@@ -1,4 +1,4 @@
-# BahaForumPreviewer(BFP) 巴哈討論區預覽
+# BahaForumPreviewer(BFP) 巴哈討論區預覽   [![Gitter](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/johnson18404/BahaForumPreviewer)
 
 <p align="center"><a href="#" target="_blank"><img width="100"src="docs/128.png"></a></p>
 
