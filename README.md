@@ -1,6 +1,6 @@
 # BahaForumPreviewer(BFP) 巴哈討論區預覽
 
-<p align="center"><a href="http://google.com" target="_blank"><img width="100"src="docs/128.png"></a></p>
+<p align="center"><a href="#" target="_blank"><img width="100"src="docs/128.png"></a></p>
 
 BahaForumPreviewer(BFP) 是一個 Chrome Extention。
 
@@ -9,7 +9,7 @@ BahaForumPreviewer(BFP) 是一個 Chrome Extention。
 # 安裝
 點擊下方 [available in chrome web store] 即可安裝。
 
-[![available in the chrome website store](docs/ChromeWebStore_BadgeWBorder_v2_340x96.png)](https://chrome.google.com/)
+[![available in the chrome website store](docs/ChromeWebStore_BadgeWBorder_v2_340x96.png)](https://chrome.google.com/webstore/detail/bahaforumpreviewerbfp-%E5%B7%B4%E5%93%88%E8%A8%8E/gkclanjhoadmoehcekihchpnclggnbba?utm_source=chrome-ntp-icon)
 
 # 介紹
 
