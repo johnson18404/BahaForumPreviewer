@@ -7,7 +7,7 @@ BahaForumPreviewer(BFP) 是一個 Chrome Extention。
 讓你在逛電腦版巴哈姆特討論區(哈拉區)時，能夠有像手機板一樣有文章、圖片預覽的功能。
 
 # 安裝
-點擊下方 [available in chrome web store] 即可安裝。
+點擊下方 [available in the chrome web store] 即可安裝。
 
 [![available in the chrome website store](docs/ChromeWebStore_BadgeWBorder_v2_340x96.png)](https://chrome.google.com/webstore/detail/bahaforumpreviewerbfp-%E5%B7%B4%E5%93%88%E8%A8%8E/gkclanjhoadmoehcekihchpnclggnbba?utm_source=chrome-ntp-icon)
 
