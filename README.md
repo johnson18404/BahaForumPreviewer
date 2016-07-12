@@ -12,9 +12,18 @@ BahaForumPreviewer(BFP) 是一個 Chrome Extention。
 [![available in the chrome website store](docs/ChromeWebStore_BadgeWBorder_v2_340x96.png)](https://chrome.google.com/webstore/detail/bahaforumpreviewerbfp-%E5%B7%B4%E5%93%88%E8%A8%8E/gkclanjhoadmoehcekihchpnclggnbba?utm_source=chrome-ntp-icon)
 
 # 介紹
+不囉嗦，直接看圖。
 
+原本電腦版討論區的畫面：
+![available in the chrome website store](docs/p0.jpg)
 
+在安裝BahaForumPreviewer之後：
+![available in the chrome website store](docs/p1.jpg)
 
+每篇文章都多了圖片與文字的預覽，讓你不用點進去文章就可以先大略知道文章內容。
 
 
 # License
+MIT
+
+Copyright (c) 2016 johnson18404
