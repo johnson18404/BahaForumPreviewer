@@ -1,6 +1,7 @@
 //console.log('bfp v0.5');
 
-var requestUrl= 'http://api.gamer.com.tw/mobile_app/forum/v1/B.php';
+// var requestUrl= 'http://api.gamer.com.tw/mobile_app/forum/v1/B.php';
+var requestUrl= 'https://api.gamer.com.tw/mobile_app/forum/v1/B.php';
 var w = 200;
 var mypage, mybsn, mysubbsn;
 
@@ -44,7 +45,7 @@ function matchPreview(Jdata) {
 }
 
 function main() {
-    //console.log('bahaloader function main');
+    console.log('BahaForumPreviewer is loaded.');
     
     chrome.storage.local.get('DonotOpenNewTab', function (result) {
         //console.log('DonotOpenNewTab=');
