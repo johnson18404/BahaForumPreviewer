@@ -1,6 +1,10 @@
-//console.log('bfp v0.5');
+/**  BahaForumPreviewer(BFP) 巴哈討論區預覽
+ *   v1.1
+ *   https://github.com/johnson18404/BahaForumPreviewer
+ * 
+ */
 
-// var requestUrl= 'http://api.gamer.com.tw/mobile_app/forum/v1/B.php';
+var ver = 1.1;
 var requestUrl= 'https://api.gamer.com.tw/mobile_app/forum/v1/B.php';
 var w = 200;
 var mypage, mybsn, mysubbsn;
@@ -45,7 +49,7 @@ function matchPreview(Jdata) {
 }
 
 function main() {
-    console.log('BahaForumPreviewer is loaded.');
+    console.log('BahaForumPreviewer is loaded. version: v' + ver);
     
     chrome.storage.local.get('DonotOpenNewTab', function (result) {
         //console.log('DonotOpenNewTab=');
@@ -68,7 +72,7 @@ function main() {
     // ajax request
     $.ajax({
 	  url: requestUrl,
-	  data: {'_android': 'tw.com.gamer.android.activecenter', 'page': mypage, 'bsn': mybsn, '_version': 79, 'ltype': ''},
+	  data: {'page': mypage, 'bsn': mybsn, '_version': 81, 'ltype': ''},
 	  type: "GET",
 	  dataType: "json",
 	  success: function(Jdata) {
