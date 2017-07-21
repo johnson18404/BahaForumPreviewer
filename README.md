@@ -26,4 +26,4 @@ BahaForumPreviewer(BFP) 是一個 Chrome Extention。
 # License
 MIT
 
-Copyright (c) 2016 johnson18404
+Copyright (c) 2017 johnson18404
