@@ -1,16 +1,18 @@
 /**  BahaForumPreviewer(BFP) 巴哈討論區預覽 
- *   Version:       1.3
+ *   Version:       1.5
  *   Author:        johnson18404
- *   Date:          2017/7/22
+ *   Date:          2017/11/21
  *   Source Code:   https://github.com/johnson18404/BahaForumPreviewer
  *   Chrome web store url: https://chrome.google.com/webstore/detail/bahaforumpreviewerbfp-%E5%B7%B4%E5%93%88%E8%A8%8E/gkclanjhoadmoehcekihchpnclggnbba?utm_source=chrome-ntp-icon
  */
 
-var ver = 1.3;
+var ver = 1.5;
 var requestUrl= 'https://api.gamer.com.tw/mobile_app/forum/v1/B.php';
 var w = 200;
 var mypage, mybsn, mysubbsn;
 var g_openInNewtab = false;
+var g_enableBlacklist = false;
+var g_blacklist;
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -67,7 +69,7 @@ function matchPreviewOld(Jdata) {
 			if (nowid.id == this['snA']) {
 				$(nowid).html( '<b>' +  $(nowid).html() );
 				var img1 ="";	
-				if (this['thumbnail'] != "") {
+				if (this['thumbnail']!="" && CheckMatchBlackList(this['title'])) {
 					 img1 = '<img class="img-thumbnail" width="' + w + '" src="' + this['thumbnail'] +'"><br>';
 				}
 				$(nowid).append('</b><br><table><tbody><tr><td></td><td style="color:#6E6E6E">'+ img1 + this['summary'] +  '</td></tr></tbody></table>');
@@ -96,7 +98,7 @@ function matchPreviewNew(Jdata) {
   
                 // thumbnail
 				var img1 ="";	
-				if (this['thumbnail'] != "") {
+				if (this['thumbnail']!="" && CheckMatchBlackList(this['title'])) {
 					 img1 = '<div style="padding: 1%; padding-top: 0;"><img class="img-thumbnail" width="' + w + '" src="' + this['thumbnail'] +'"></div>';
 				}
 				// article summary
@@ -106,20 +108,19 @@ function matchPreviewNew(Jdata) {
     });
 }
 
+function CheckMatchBlackList(title) {
+    console.log(title);
+    // console.log(g_blacklist);
+    // console.log(g_enableBlacklist);
+    if (g_enableBlacklist && g_blacklist.test(title)) {
+        console.log(g_blacklist.test(title));
+        return false;
+    }
+    return true;
+}
+
 function main() {
-    console.log('BahaForumPreviewer is loaded. version: v' + ver);
-    
-    chrome.storage.local.get('DonotOpenNewTab', function (result) {
-        //console.log('DonotOpenNewTab=');
-        //console.log(result.DonotOpenNewTab);
-        
-		if (!result.DonotOpenNewTab) {
-            g_openInNewtab = true;
-            $.each( $('td[class="FM-blist3"] > a').toArray(), function(index, value) {  
-                $(this).attr('target', '_blank');
-            });
-        }
-    });
+    console.log('BahaForumPreviewer loaded. version: ' + ver);
     
 
     
@@ -155,8 +156,41 @@ function main() {
 
 
 $(document).ready(function(){
-    console.log('BFP ready.');
-    
+    console.log('BFP ready.');    
+
+    chrome.storage.local.get('blacklist', function (res) {
+        console.log(res);
+        try {
+            // console.log(res.blacklist);
+            g_blacklist = new RegExp(res.blacklist, "i");
+            console.log(g_blacklist);
+        }
+        catch(err) {
+            console.log('load blacklist error.');
+            console.log(err);
+        }
+    });
+
+    chrome.storage.local.get('enableBlacklist', function (result) {
+        console.log(result);
+        if (result.enableBlacklist) {
+            console.log('blacklist enabled.');
+            g_enableBlacklist = true;
+        }
+    });
+
+    chrome.storage.local.get('DonotOpenNewTab', function (result) {
+        //console.log('DonotOpenNewTab=');
+        //console.log(result.DonotOpenNewTab);
+        
+		if (!result.DonotOpenNewTab) {
+            g_openInNewtab = true;
+            $.each( $('td[class="FM-blist3"] > a').toArray(), function(index, value) {  
+                $(this).attr('target', '_blank');
+            });
+        }
+    });
+
     chrome.storage.local.get('stop', function (result) {
 		if (result.stop) 
             BahaLoaderDisable();

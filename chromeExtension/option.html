@@ -8,30 +8,46 @@
 	<link href="lib/bootstrap.min.css" rel="stylesheet">
 	<!-- <link href="lib/bootstrap-theme.min.css" rel="stylesheet"> -->
 	<link href="lib/bootstrap-toggle.min.css" rel="stylesheet">
-	<script src="option.js"></script>
+  <script src="option.js"></script>
+  <style>
+html, body {
+  font-family: Verdana,sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+p {
+  font-family: Verdana,sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.container {
+  margin-left:20%;
+  width:80%;
+}
+
+  </style>
 </head>
 <body>
-<div class="row">
-  <div class="col-md-2"> </div>
-  <div class="col-md-6"><h1><img src="icons/48.png" />&nbsp;BahaForumPreviewer 設定畫面</h1></div>
-</div>
-<hr style="height:5px;border:none;border-top:5px ridge darkorange;" /> 
+<div class="container">
+  <h1><img src="icons/48.png" />&nbsp;BahaForumPreviewer 設定畫面</h1>
+  <a href="https://github.com/johnson18404/BahaForumPreviewer" target="_blank">https://github.com/johnson18404/BahaForumPreviewer</a>
+  <hr style="height:5px;border:none;border-top:5px ridge darkorange;margin-left:0%;width:60%;" />
 
-<div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-4"><h3>開啟/關閉BahaForumPreviewer</h3></div>
-  <div class="col-md-4"><div style="margin-top: 13px;"><input id="toggle-event" type="checkbox" data-toggle="toggle"></div></div>
-</div>
+  <div style="margin-top: 13px;"><input id="toggle-event" type="checkbox" data-toggle="toggle">&nbsp;開啟/關閉BahaForumPreviewer</div><br>
+  <div style="margin-top: 13px;"><input id="toggle-event2" type="checkbox" data-toggle="toggle">&nbsp;點擊文章之後，在新分頁中開啟</div><br>
 
-<div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-4"><h3>點擊文章之後，在新分頁中開啟</h3></div>
-  <div class="col-md-4"><div style="margin-top: 13px;"><input id="toggle-event2" type="checkbox" data-toggle="toggle"></div></div>
-</div>
+  <fieldset style="width:50%;">
+    <legend> <div style="margin-top: 13px;"><input id="toggle-event3" type="checkbox" data-toggle="toggle">&nbsp;過濾預覽縮圖</div></legend>
+    <div style="margin-left:2%;">
+      <p>當標題中符合特定關鍵詞的<a href="https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F" target="_blank">Regular Expression</a>時，不顯示預覽縮圖。<button id="blacklistReset" class="btn btn-xs btn-link">預設值</button></p>
+      <textarea id="blacklist" class="form-control" rows="4" ></textarea>
+      
+    </div>
+  </fieldset>
 
-<div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-3"><h3>程式介紹: <a href="https://github.com/johnson18404/BahaForumPreviewer">https://github.com/johnson18404/BahaForumPreviewer</a></h3></div>
+
 </div>
 </body>
 </html>
