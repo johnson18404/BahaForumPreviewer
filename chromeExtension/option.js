@@ -2,14 +2,13 @@
 const g_blacklistDefalut = "polla|[保保寶宝]\\.?[拉拉啦啦]|p\\.?o\\.?l\\.?l\\.?a|[吉吉告告占占]\\.?([娃娃])+";
 
 $(function() {
- 
-  
+
+		// BFP
     chrome.storage.local.get('stop', function (result) {
 		if (!result.stop) {
 			$('#toggle-event').bootstrapToggle('on');
 		}
     });
-
     $('#toggle-event').change(function() {
 		if ($(this).prop('checked')) {
 			chrome.storage.local.remove('stop');
@@ -18,13 +17,13 @@ $(function() {
 			chrome.storage.local.set({'stop': true});
 		}
     });
-    
+		
+		// Open in new tab
     chrome.storage.local.get('DonotOpenNewTab', function (result) {
 		if (!result.DonotOpenNewTab) {
 			$('#toggle-event2').bootstrapToggle('on');
 		}
     });
-
     $('#toggle-event2').change(function() {
 		if ($(this).prop('checked')) {
 			chrome.storage.local.remove('DonotOpenNewTab');
@@ -34,6 +33,7 @@ $(function() {
 		}
     });
 		
+		// BlackList
     chrome.storage.local.get('enableBlacklist', function (result) {
 			if (!result.enableBlacklist) {
 				$('#toggle-event3').bootstrapToggle('off');
@@ -42,7 +42,6 @@ $(function() {
 				$('#toggle-event3').bootstrapToggle('on');
 			}
 		});
-	
 		$('#toggle-event3').change(function() {
 			if ($(this).prop('checked')) {
 				chrome.storage.local.set({'enableBlacklist': true});
@@ -72,6 +71,25 @@ $(function() {
 			console.log('reset blacklist');
 			chrome.storage.local.set({'blacklist': g_blacklistDefalut});
 			$('#blacklist').val(g_blacklistDefalut);
+		});
+
+
+		// Enhanced Baha Reply
+		chrome.storage.local.get('enableEBR', function (result) {
+			if (result.enableEBR) {
+				$('#toggle-event4').bootstrapToggle('on');
+			}
+			else {
+				$('#toggle-event4').bootstrapToggle('off');
+			}
+		});
+		$('#toggle-event4').change(function() {
+			if ($(this).prop('checked')) {
+				chrome.storage.local.set({'enableEBR': true});
+			}
+			else {
+				chrome.storage.local.remove('enableEBR');
+			}
 		});
 
 });
