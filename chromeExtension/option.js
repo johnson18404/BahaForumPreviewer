@@ -1,5 +1,5 @@
 
-const g_blacklistDefalut = "polla|[保保寶宝]\\.?[拉拉啦啦]|p\\.?o\\.?l\\.?l\\.?a|[吉吉告告占占]\\.?([娃娃])+";
+const g_blacklistDefalut = "polla|[保保寶宝].?[拉拉啦啦]|p.?o.?l.?l.?a|[吉吉告告占占].?([娃娃])+|KFC|緊急通知|瑪雅與|安娜貝爾";
 
 $(function() {
 

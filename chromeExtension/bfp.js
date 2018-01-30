@@ -6,13 +6,15 @@
  *   Chrome web store url: https://chrome.google.com/webstore/detail/bahaforumpreviewerbfp-%E5%B7%B4%E5%93%88%E8%A8%8E/gkclanjhoadmoehcekihchpnclggnbba?utm_source=chrome-ntp-icon
  */
 
-var ver = 1.5;
+var ver = 2.1;
 var requestUrl= 'https://api.gamer.com.tw/mobile_app/forum/v1/B.php';
 var w = 200;
 var mypage, mybsn, mysubbsn;
 var g_openInNewtab = false;
-var g_enableBlacklist = false;
-var g_blacklist;
+
+const g_blacklistDefalut = "polla|[保保寶宝].?[拉拉啦啦]|p.?o.?l.?l.?a|[吉吉告告占占].?([娃娃])+|KFC|緊急通知|瑪雅與|安娜貝爾";
+g_enableBlacklist = false;
+g_blacklist = "";
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -168,6 +170,7 @@ $(document).ready(function(){
         catch(err) {
             console.log('load blacklist error.');
             console.log(err);
+            g_blacklist = new RegExp(g_blacklistDefalut, "i");
         }
     });
 
