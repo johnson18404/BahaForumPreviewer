@@ -121,7 +121,7 @@ function CheckMatchBlackList(title) {
     return true;
 }
 
-function main() {
+function bfp_main() {
     console.log('BahaForumPreviewer loaded. version: ' + ver);
     
 
@@ -198,6 +198,6 @@ $(document).ready(function(){
 		if (result.stop) 
             BahaLoaderDisable();
         else
-            main();
+            bfp_main();
     });
 });

@@ -1,6 +1,6 @@
 
 
-function main() {
+function bc_main() {
     console.log('bc main');
     if (!g_enableBlacklist) return;
 
@@ -14,7 +14,7 @@ function main() {
 }
 
 (function() {
-    main();
+    setTimeout(bc_main, 2000);
 
 })();
 
