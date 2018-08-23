@@ -1,14 +1,9 @@
-// ==UserScript==
-// @name         Enhanced Baha Reply
-// @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  Enhance Baha Forum reply function.
-// @author       johnson18404
-// @match        https://forum.gamer.com.tw/C.php*
-// @grant        none
-// ==/UserScript==
+/**
+ *  Content Script http://forum.gamer.com.tw/C.php*
+ */
 
-(function() {
+
+function EnhancedBahaReply() {
     'use strict';
     var version = 1.0;
     var $ = jQuery;
@@ -74,7 +69,8 @@
           var t = $(elmt);
           $(t.find('img')[0]).css('opacity', '0.2'); // avatar
           $(t.find('a.reply-content__user')[0]).css('color', '#8080802b'); // id
-          $(t.find('article.reply-content__article')[0]).css('color', '#8080802b'); // link
+        //   $(t.find('article.reply-content__article')[0]).css('color', '#8080802b'); // link
+          $(t.find('article.reply-content__article')[0]).css('color', '#f3f4f4'); // link
           $(t.find('input.myMarkBtn')[0]).attr('value', 'cancel');
       }
     };
@@ -129,7 +125,7 @@
         $.each(arr, (i, elmt) => {
             // get current userID
             var userID = ($($(elmt).find('a.reply-content__user')[0])).text().replace(/：$/, '');
-
+            
             // TagUserName
             TagUserName(i, elmt);
 
@@ -185,4 +181,23 @@
     });
 
     f1();
+}
+
+
+(async function() {
+    if (location.href.search('C.php') == -1) {
+        console.log('url not match.');
+        return;
+    }
+
+    console.log('C.js loaded.');
+    let g_config = await Init();
+    console.log(g_config);
+
+    // EnableAdvReply
+    if (!g_config.EnableAdvReply) return;   
+
+    console.log('EnableAdvReply enable.');
+
+    EnhancedBahaReply();
 })();
