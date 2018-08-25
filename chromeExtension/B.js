@@ -31,12 +31,12 @@ function getParameterByName(name, url) {
 
 function RequestThumbData() {
     return new Promise((resolve, reject) => {
-        console.log('function RequestThumbData().');
+        // console.log('function RequestThumbData().');
 
         let mypage = getParameterByName('page');
         if (mypage == undefined) mypage = 1;
         let mybsn = getParameterByName('bsn');
-        console.log('page=%s, bsn=%s', mypage, mybsn);
+        // console.log('page=%s, bsn=%s', mypage, mybsn);
 
         // ajax request
         $.ajax({
@@ -45,7 +45,7 @@ function RequestThumbData() {
             type: "GET",
             dataType: "json",
             success: function(Jdata) {
-                console.log('ajax success');
+                // console.log('ajax success');
                 
                 if (Jdata['code'] == 1) { // permission denied
                     console.log('permissionDenied();');
@@ -73,7 +73,7 @@ function RequestThumbData() {
     }
     console.log('B.js loaded.');
     let g_config = await Init();
-    console.log(g_config);
+    // console.log(g_config);
 
     // BFP
     if (g_config.EnableBFP) {
@@ -81,15 +81,15 @@ function RequestThumbData() {
             RequestThumbData(), 
             new Promise((resolve, reject) => {
                 $(document).ready(function () {
-                    console.log('document ready.');
+                    // console.log('document ready.');
                     resolve();
                 });
             }) 
         ]).then(values => { 
-            console.log('all finish.');
-            console.log(values); // [3, 1337, "foo"] 
+            // console.log('all finish.');
+            // console.log(values); // [3, 1337, "foo"] 
             let thumbData = values[0];
-            console.log(thumbData);
+            // console.log(thumbData);
     
             let thumbDataObj = {};
             Array.from(thumbData).forEach(i => {
@@ -98,7 +98,7 @@ function RequestThumbData() {
                     thumbnail: i.thumbnail
                 }
             });
-            console.log(thumbDataObj);
+            // console.log(thumbDataObj);
     
             // iterrate articles
             Array.from($('tr.b-list__row')).forEach(row => {

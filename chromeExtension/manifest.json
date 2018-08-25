@@ -1,7 +1,7 @@
 {
   "name": "巴哈討論區文章縮圖顯示",
   "description": "讓你在逛電腦版巴哈姆特討論區(哈拉區)時，能夠有像手機板一樣有文章、圖片預覽的功能。",
-  "version": "2.2",
+  "version": "2.2.1",
   "permissions": [
     "activeTab", "tabs", "storage", "http://api.gamer.com.tw/*", "http://forum.gamer.com.tw/*",
     "https://api.gamer.com.tw/*", "https://forum.gamer.com.tw/*"
