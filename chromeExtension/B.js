@@ -38,30 +38,44 @@ function RequestThumbData() {
         let mybsn = getParameterByName('bsn');
         // console.log('page=%s, bsn=%s', mypage, mybsn);
 
-        // ajax request
-        $.ajax({
-            url: 'https://api.gamer.com.tw/mobile_app/forum/v1/B.php',
-            data: {'page': mypage, 'bsn': mybsn, '_version': 81, 'ltype': ''},
-            type: "GET",
-            dataType: "json",
-            success: function(Jdata) {
-                // console.log('ajax success');
+        // // ajax request
+        // $.ajax({
+        //     url: 'https://api.gamer.com.tw/mobile_app/forum/v1/B.php',
+        //     data: {'page': mypage, 'bsn': mybsn, '_version': 81, 'ltype': ''},
+        //     type: "GET",
+        //     dataType: "json",
+        //     success: function(Jdata) {
+        //         // console.log('ajax success');
                 
-                if (Jdata['code'] == 1) { // permission denied
-                    console.log('permissionDenied();');
-                    $('#BH-pagebtn').append( '<p class="bg-danger"><a href="https://user.gamer.com.tw/mobile/MB_login.php" target="_blank">[BahaLoader]: 請點此登入手機板網頁，讓程式取得預覽內容</a></p>' );
-                    reject();
-                    return;
-                }
+        //         if (Jdata['code'] == 1) { // permission denied
+        //             console.log('permissionDenied();');
+        //             $('#BH-pagebtn').append( '<p class="bg-danger"><a href="https://user.gamer.com.tw/mobile/MB_login.php" target="_blank">[BahaLoader]: 請點此登入手機板網頁，讓程式取得預覽內容</a></p>' );
+        //             reject();
+        //             return;
+        //         }
                 
-                // matchPreview(Jdata['list']);
-                resolve(Jdata['list'])
+        //         // matchPreview(Jdata['list']);
+        //         resolve(Jdata['list'])
+        //     },
+        //     error: function() {
+        //         console.log('ajax error');
+        //         reject();
+        //     }
+        // });
+
+        // chrome 73 Avoid Cross-Origin Fetches in Content Scripts
+        chrome.runtime.sendMessage(
+            {
+                contentScriptQuery: 'fetchUrl',
+                url: `https://api.gamer.com.tw/mobile_app/forum/v1/B.php?page=${mypage}&bsn=${mybsn}&_version=81&ltype=`
             },
-            error: function() {
-                console.log('ajax error');
-                reject();
+            response => {
+                // console.log(response);
+                let Jdata = JSON.parse(response);
+                // console.log(Jdata['list']);
+                resolve(Jdata['list']);
             }
-        });
+        );
     });
 }
 
@@ -124,4 +138,3 @@ function RequestThumbData() {
         }); // promise
     }
 })();
-
